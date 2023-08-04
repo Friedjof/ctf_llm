@@ -1,4 +1,5 @@
 import json
+import os
 
 from flask import Flask, request
 import openai
@@ -30,6 +31,11 @@ def get_ctf_prompt(prompt_version: str) -> str:
 
 
 def get_flag() -> str:
+    # Exit with error if flag.txt does not exist
+    if not os.path.exists(f"config/flag.txt"):
+        print("Flag not found. Please run setup.py to generate a flag.")
+        exit(1)
+
     with open(f"config/flag.txt", "r") as file:
         flag = file.read().strip()
 
