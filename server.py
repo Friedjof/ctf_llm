@@ -77,7 +77,7 @@ if __name__ == '__main__':
     config: Config = Config(
         api_key_file="openai_key.txt",
         model_description_file="model_description.txt",
-        model="davinci"
+        model="gpt-3.5-turbo"
     )
 
     openai.api_key = config.api_key
