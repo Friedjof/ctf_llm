@@ -65,6 +65,14 @@ def ctf_chat():
     return response["choices"][0]["message"]["content"].strip()
 
 
+@app.route('/verify', methods=['POST'])
+def verify():
+    if request.form['flag'] == get_flag():
+        return "Correct!"
+    else:
+        return "Incorrect!"
+
+
 if __name__ == '__main__':
     config: Config = Config(
         api_key_file="openai_key.txt",
